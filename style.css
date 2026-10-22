@@ -1,0 +1,329 @@
+/* ==========================================
+   1. GLOBAL STYLES & VARIABLES
+   ========================================== */
+:root {
+    /* Palette Modern & Energetik (Indigo & Teal) */
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --accent: #10b981;
+    --bg-vibe-1: #4f46e5;
+    --bg-vibe-2: #ec4899;
+    
+    /* Warna Teks */
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    
+    /* Glassmorphism Settings */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    --blur: blur(10px);
+    
+    --radius-lg: 20px;
+    --radius-md: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    background-color: #f1f5f9;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+/* ==========================================
+   2. VISUAL BACKGROUND (The "Gambar")
+   ========================================== */
+.bg-vibe {
+    position: fixed;
+    top: -50px;
+    left: -50px;
+    width: calc(100% + 100px);
+    height: calc(100% + 100px);
+    background: 
+        radial-gradient(circle at 15% 15%, var(--bg-vibe-1) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, var(--bg-vibe-2) 0%, transparent 40%);
+    opacity: 0.15;
+    z-index: -1;
+}
+
+/* ==========================================
+   3. LAYOUT CONTAINER
+   ========================================== */
+.app-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.logo-icon {
+    font-size: 2.8rem;
+    background: var(--glass-bg);
+    padding: 10px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--glass-shadow);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--blur);
+}
+
+.header-text h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--text-main);
+}
+
+.header-text p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* Main Grid */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+@media (min-width: 850px) {
+    .main-content {
+        grid-template-columns: 400px 1fr;
+    }
+}
+
+/* ==========================================
+   4. GLASS PANELS (The Attractive UI)
+   ========================================== */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: var(--blur);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    padding: 30px;
+    transition: transform 0.3s ease;
+}
+
+.input-panel:hover {
+    transform: translateY(-5px);
+}
+
+.panel-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ==========================================
+   5. FORMS & INPUTS
+   ========================================== */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.flex-group {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr;
+    gap: 15px;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-main);
+}
+
+.optional, .help-text {
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: var(--radius-md);
+    border: 1.5px solid #e2e8f0;
+    background: rgba(255, 255, 255, 0.9);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+/* Extra Simulation Box Styling */
+.extra-sim {
+    background: rgba(16, 185, 129, 0.05);
+    padding: 15px;
+    border-radius: var(--radius-md);
+    border: 1px dashed rgba(16, 185, 129, 0.3);
+}
+
+.extra-sim label {
+    color: var(--accent);
+}
+
+.btn-calculate {
+    width: 100%;
+    padding: 15px;
+    border-radius: var(--radius-md);
+    border: none;
+    background: linear-gradient(135deg, var(--primary) 0%, #818cf8 100%);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.btn-calculate:hover {
+    background: linear-gradient(135deg, var(--primary-hover) 0%, #6366f1 100%);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+    transform: scale(1.02);
+}
+
+/* ==========================================
+   6. RESULT PANEL VISUALS
+   ========================================= */
+.result-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.placeholder-text {
+    color: var(--text-muted);
+    max-width: 300px;
+}
+
+.placeholder-text p:first-child {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.result-content {
+    width: 100%;
+}
+
+/* Progress Bar */
+.progress-container {
+    margin-bottom: 25px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    border-radius: var(--radius-md);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 12px;
+    background-color: #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent) 0%, #34d399 100%);
+    border-radius: 6px;
+    transition: width 0.6s ease-out;
+}
+
+/* Summary Cards */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative visual gradient on cards */
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+}
+
+.basic-card::after { background: #e2e8f0; }
+.time-card::after { background: var(--primary); }
+.date-card::after { background: var(--accent); }
+
+.card-icon { font-size: 1.5rem; margin-bottom: 8px; }
+.card-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+.card-value { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 4px; }
+
+/* Extra Result Box */
+.extra-result {
+    background: var(--accent);
+    color: white;
+    padding: 15px;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.extra-result strong { font-weight: 700; color: #ecfdf5; }
+
+/* ==========================================
+   7. UTILITIES & FOOTER
+   ========================================= */
+.hidden { display: none !important; }
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
