@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Tabungan Impian Siswa</title>
+    <!-- Font Google: Inter (Sangat Modern) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Latar Belakang Dekoratif (Dibuat dengan CSS) -->
+    <div class="bg-vibe"></div>
+
+    <div class="app-container">
+        
+        <!-- HEADER DENGAN IKON -->
+        <header class="header">
+            <div class="logo-icon">🎯</div>
+            <div class="header-text">
+                <h1>Tabungan Impian</h1>
+                <p>Wujudkan target finansialmu, selangkah demi selangkah.</p>
+            </div>
+        </header>
+
+        <!-- MAIN LAYOUT: INPUT & HASIL -->
+        <main class="main-content">
+            
+            <!-- PANEL INPUT (SEBELAH KIRI) -->
+            <section class="glass-panel input-panel">
+                <h2 class="panel-title"><span>⚙️</span> Atur Rencanamu</h2>
+                
+                <form id="savingsForm">
+                    <div class="form-group">
+                        <label for="targetName">Nama Impian / Target</label>
+                        <input type="text" id="targetName" placeholder="misal: Sepatu Baru, Laptop, Konser" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="targetAmount">Target Dana (Rp)</label>
+                        <input type="number" id="targetAmount" placeholder="1000000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="initialBalance">Tabungan Awal (Rp) <span class="optional">(Opsional)</span></label>
+                        <input type="number" id="initialBalance" placeholder="0">
+                    </div>
+
+                    <div class="form-group flex-group">
+                        <div>
+                            <label for="depositAmount">Setoran (Rp)</label>
+                            <input type="number" id="depositAmount" placeholder="20000" required>
+                        </div>
+                        <div>
+                            <label for="frequency">Frekuensi</label>
+                            <select id="frequency">
+                                <option value="daily">Harian</option>
+                                <option value="weekly">Mingguan</option>
+                                <option value="monthly">Bulanan</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- FITUR BARU: SIMULASI EKSTRA -->
+                    <div class="form-group extra-sim">
+                        <label for="extraDeposit">Simulasi Hemat Jajan Tambahan (Rp/periode)</label>
+                        <input type="number" id="extraDeposit" placeholder="misal: 5000">
+                        <p class="help-text">Berapa banyak jajan (kopi/boba) yang bisa kamu hemat untuk ditabung?</p>
+                    </div>
+
+                    <button type="submit" class="btn-calculate">🔥 Hitung Sekarang</button>
+                </form>
+            </section>
+
+            <!-- PANEL HASIL & VISUAL (SEBELAH KANAN) -->
+            <section class="glass-panel result-panel" id="resultPanel">
+                <h2 class="panel-title"><span>📊</span> Hasil & Proyeksi</h2>
+                
+                <div class="placeholder-text" id="resultPlaceholder">
+                    <p>☕</p>
+                    <p>Isi data di sebelah kiri dan klik 'Hitung Sekarang' untuk melihat keajaiban tabunganmu.</p>
+                </div>
+
+                <div class="result-content hidden" id="resultContent">
+                    
+                    <!-- PROGRESS BAR VISUAL -->
+                    <div class="progress-container">
+                        <div class="progress-info">
+                            <span id="progressLabel">Progres</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="progressBarFill"></div>
+                        </div>
+                    </div>
+
+                    <!-- KARTU SUMMARY -->
+                    <div class="summary-cards">
+                        <div class="card basic-card">
+                            <span class="card-icon">💰</span>
+                            <span class="card-label">Target Akhir</span>
+                            <span class="card-value" id="resTargetAmount">Rp 0</span>
+                        </div>
+                        <div class="card time-card">
+                            <span class="card-icon">🗓️</span>
+                            <span class="card-label">Waktu Dibutuhkan</span>
+                            <span class="card-value" id="resTimeNeeded">0 Periode</span>
+                        </div>
+                        <div class="card date-card">
+                            <span class="card-icon">🚀</span>
+                            <span class="card-label">Perkiraan Tercapai</span>
+                            <span class="card-value" id="resTargetDate">-</span>
+                        </div>
+                    </div>
+
+                    <!-- FITUR VISUAL: HASIL EKSTRA HEMAT -->
+                    <div class="extra-result hidden" id="extraResultBox">
+                        <p>💡 **Efek Hemat Jajan Tambahan:** Dengan ekstra hemat <span id="resExtraAmount">Rp 0</span> per periode, impianmu tercapai **<span id="resDaysSaved">0</span>** lebih cepat!</p>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>&copy; <span id="year"></span> Kalkulator Tabungan Siswa Modern | Bersih, Baku, Estetik</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
